@@ -1,0 +1,62 @@
+name: SimplePDF tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  wordpress:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.0', '8.3', '8.4']
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: testing
+          MYSQL_DATABASE: wordpress
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -ptesting"
+          --health-interval=10s --health-timeout=5s --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, gd, mysqli
+          tools: composer, wp-cli
+          coverage: none
+      - name: PHP syntax
+        run: find simple-mpdf-print-button tests -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: JavaScript syntax
+        run: for file in simple-mpdf-print-button/assets/*.js; do node --check "$file"; done
+      - name: Install locked mPDF dependencies
+        working-directory: simple-mpdf-print-button
+        run: composer install --no-dev --prefer-dist --no-interaction --no-progress
+      - name: Install WordPress test site
+        run: |
+          mkdir /tmp/simplepdf-wp
+          wp core download --path=/tmp/simplepdf-wp --version=6.8.3
+          wp config create --path=/tmp/simplepdf-wp --dbname=wordpress --dbuser=root --dbpass=testing --dbhost=127.0.0.1:3306
+          wp core install --path=/tmp/simplepdf-wp --url=http://localhost --title=SimplePDF-test --admin_user=testadmin --admin_password=local-ci-only --admin_email=test@example.invalid --skip-email
+          cp -r simple-mpdf-print-button /tmp/simplepdf-wp/wp-content/plugins/
+          wp plugin activate simple-mpdf-print-button --path=/tmp/simplepdf-wp
+      - name: WordPress and PDF regression tests
+        run: wp eval-file "$GITHUB_WORKSPACE/tests/wordpress.php" --path=/tmp/simplepdf-wp
+      - name: Verify generated PDF text
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
+          pdftotext test-output.pdf test-output.txt
+          grep -q 'SimplePDF GitHub test' test-output.txt
+      - name: Build installable ZIP
+        if: matrix.php == '8.3'
+        run: zip -qr simple-mpdf-print-button-4.4.0.zip simple-mpdf-print-button -x '*/composer.json' '*/composer.lock'
+      - uses: actions/upload-artifact@v4
+        if: matrix.php == '8.3'
+        with:
+          name: simple-mpdf-print-button-4.4.0
+          path: |
+            simple-mpdf-print-button-4.4.0.zip
+            test-output.pdf

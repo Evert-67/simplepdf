@@ -1,0 +1,19 @@
+{
+  "name": "evert-67/simplepdf",
+  "description": "Simple mPDF Print Button dependencies",
+  "type": "wordpress-plugin",
+  "require": {
+    "mpdf/mpdf": "8.2.5",
+    "mpdf/psr-http-message-shim": "2.0.1",
+    "mpdf/psr-log-aware-trait": "3.0.0",
+    "myclabs/deep-copy": "1.13.1",
+    "paragonie/random_compat": "9.99.100",
+    "psr/http-message": "2.0",
+    "psr/log": "3.0.2",
+    "setasign/fpdi": "2.6.3"
+  },
+  "config": {
+    "vendor-dir": "mpdf",
+    "allow-plugins": false
+  }
+}
