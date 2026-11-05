@@ -1,7 +1,7 @@
 <?php
 // Executed by wp eval-file after plugin activation, using real WordPress functions.
-$count=0;
-function smppb_test($ok,$label) { global $count; if (!$ok) throw new RuntimeException($label); $count++; }
+$GLOBALS['smppb_test_count']=0;
+function smppb_test($ok,$label) { if (!$ok) throw new RuntimeException($label); $GLOBALS['smppb_test_count']++; }
 smppb_test(function_exists('smppb_pdf_filename'),'Plugin loaded');
 update_option('smppb_pdf_output','download');
 smppb_test(smppb_output_mode()==='download','Download default');
@@ -26,4 +26,5 @@ $pdf->WriteHTML('<h1>SimplePDF GitHub test</h1><p>WordPress en mPDF werken samen
 $bytes=$pdf->Output('','S');
 smppb_test(strncmp($bytes,'%PDF-',5)===0 && strlen($bytes)>1000,'Real PDF output');
 file_put_contents(getenv('GITHUB_WORKSPACE').'/test-output.pdf',$bytes);
-echo "$count WordPress/PDF checks passed\n";
+if ($GLOBALS['smppb_test_count'] !== 13) throw new RuntimeException('Unexpected test count');
+echo $GLOBALS['smppb_test_count']." WordPress/PDF checks passed\n";

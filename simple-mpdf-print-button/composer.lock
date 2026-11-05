@@ -2,7 +2,7 @@
   "_readme": [
     "Locked to the dependency versions and references bundled with Simple PDF 4.4.0."
   ],
-  "content-hash": "e65188657cb7b0299f5fd94620e8377f",
+  "content-hash": "bb843dfd022df96e1b590030686582c3",
   "packages": [
     {
       "name": "mpdf/mpdf",
