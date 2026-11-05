@@ -1,0 +1,6 @@
+/simple-mpdf-print-button/mpdf/
+*.zip
+/test-output.*
+.env
+wp-config.php
+*.log

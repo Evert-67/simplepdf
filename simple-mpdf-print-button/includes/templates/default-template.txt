@@ -1,0 +1,77 @@
+<style>
+ body{
+ font-family: Verdana;
+ color: #535353;
+ }
+    @page {
+        margin-top: 2.5cm;
+        margin-bottom: 3.5cm;
+        margin-left: 2cm;
+        margin-right: 2cm;
+        footer: html_letterfooter;
+        
+    }
+
+    @page :first {
+        margin-top: 6.5cm;
+        header: html_letterheader;
+        footer: html_letterfooter;
+        resetpagenum: 1;
+    }
+
+    @page letterhead :first {
+        margin-top: 8cm;
+        margin-bottom: 4cm;
+        header: html_letterheader;
+        resetpagenum: 1;
+		
+    }
+
+    .letter {
+        page-break-before: always;
+        page: letterhead;
+    }
+	hr{
+			border: 0;
+			height: 1px;
+			background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+		}
+</style>
+<htmlpageheader name="letterheader">
+        <table width="100%">
+        <tr>
+        
+            <td style="font-weight: bold;font-size: 14pt" width="30%">
+                [site_logo width="100" height="100"]
+            </td>
+            <td>
+               
+            </td>
+            <td style="color:#535353;font-size: 10pt" width="30%">	
+				<strong>[site_name]</strong><br />
+                Addressline1<br />
+                Zip and Town<br />
+                Tel: +00 123 666<br />
+				[site_url]	
+            </td>   
+			</tr>
+    </table>
+    <h1 class="titel" style="margin: 12px 0px; padding-bottom: 8px; border-bottom: 1px solid #fbc523;">
+	<hr>
+        [post_title]
+    </h1>
+</htmlpageheader>
+
+<div>
+    [post_content]
+</div>
+
+<htmlpagefooter name="letterfooter">
+    <div style="font-size: 9pt;text-align: center;padding: 3mm">
+        Page [page_number]
+    </div>
+	<hr>
+    <div style="font-size: 9pt;text-align: center;padding-top: 3mm">
+         [copyright_year 2022 2025] [site_name] | Author [post_author]
+    </div>
+</htmlpagefooter>
