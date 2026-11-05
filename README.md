@@ -4,7 +4,11 @@ A WordPress plugin by Evert Beijes / CodePug for PDF buttons and custom HTML/CSS
 
 ## Installation
 
-Open **Actions → SimplePDF tests**, select a successful run and download the `simple-mpdf-print-button-4.4.0` artifact. Extract the download and upload the contained plugin ZIP through **WordPress → Plugins → Add New → Upload Plugin**. This ZIP includes mPDF and its fonts. GitHub source archives do not contain these dependencies and are not directly installable.
+**[Download the installable WordPress plugin ZIP](https://github.com/Evert-67/simplepdf/releases/latest/download/simple-mpdf-print-button-4.4.0.zip)**
+
+Upload this ZIP directly through **WordPress → Plugins → Add New → Upload Plugin**. Do not extract it first. If updating, choose to replace the existing plugin.
+
+Use the named plugin ZIP under [Releases](https://github.com/Evert-67/simplepdf/releases/latest). **Code → Download ZIP**, `main.zip`, and the automatic **Source code** downloads are development archives, not WordPress installation packages. The release ZIP includes mPDF and its fonts; the source archive does not.
 
 The plugin code was imported from the existing 4.4.0 distribution. Composer installs the dependency versions and source references recorded in that distribution. The plugin continues to use `mpdf/autoload.php`.
 

@@ -40,8 +40,8 @@ jobs:
           wp core download --path=/tmp/simplepdf-wp --version=6.8.3
           wp config create --path=/tmp/simplepdf-wp --dbname=wordpress --dbuser=root --dbpass=testing --dbhost=127.0.0.1:3306
           wp core install --path=/tmp/simplepdf-wp --url=http://localhost --title=SimplePDF-test --admin_user=testadmin --admin_password=local-ci-only --admin_email=test@example.invalid --skip-email
-          cp -r simple-mpdf-print-button /tmp/simplepdf-wp/wp-content/plugins/
-          wp plugin activate simple-mpdf-print-button --path=/tmp/simplepdf-wp
+          zip -qr /tmp/simple-mpdf-print-button-install.zip simple-mpdf-print-button -x '*/composer.json' '*/composer.lock'
+          wp plugin install /tmp/simple-mpdf-print-button-install.zip --activate --path=/tmp/simplepdf-wp
       - name: WordPress and PDF regression tests
         run: wp eval-file "$GITHUB_WORKSPACE/tests/wordpress.php" --path=/tmp/simplepdf-wp
       - name: Verify generated PDF text
@@ -60,3 +60,40 @@ jobs:
           path: |
             simple-mpdf-print-button-4.4.0.zip
             test-output.pdf
+
+  release:
+    needs: [wordpress]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    concurrency:
+      group: release-4.4.0
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: simple-mpdf-print-button-4.4.0
+          path: dist
+      - name: Check plugin archive
+        run: |
+          python3 - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('dist/simple-mpdf-print-button-4.4.0.zip') as archive:
+              files = archive.namelist()
+              assert 'simple-mpdf-print-button/simple-mpdf-print-button.php' in files
+              assert all(name.startswith('simple-mpdf-print-button/') for name in files)
+              assert archive.testzip() is None
+              assert 'simple-mpdf-print-button/mpdf/autoload.php' in files
+          PY
+      - name: Publish installable WordPress ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_COMMIT: ${{ github.sha }}
+        run: |
+          if gh release view v4.4.0 > /dev/null 2>&1; then
+            echo "Release v4.4.0 already exists; preserving published assets."
+          else
+            gh release create v4.4.0 "dist/simple-mpdf-print-button-4.4.0.zip" --target "$RELEASE_COMMIT" --title "Simple mPDF Print Button 4.4.0" --notes "Download simple-mpdf-print-button-4.4.0.zip below and upload it directly in WordPress via Plugins > Add New > Upload Plugin. Do not use the automatically generated Source code archives. This plugin ZIP includes mPDF and its fonts. Automated tests include installing and activating the packaged ZIP in WordPress." --latest
+          fi
