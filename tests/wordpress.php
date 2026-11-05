@@ -22,7 +22,7 @@ smppb_test(strpos($header,'attachment;')===0 && !preg_match('/[\r\n]/',$header),
 smppb_test(strpos(smppb_content_disposition('test.pdf','inline'),'inline;')===0,'Inline header');
 require_once SMPPB_PATH.'mpdf/autoload.php';
 $pdf=new \Mpdf\Mpdf(['tempDir'=>sys_get_temp_dir().'/simplepdf-ci']);
-$pdf->WriteHTML('<h1>SimplePDF GitHub test</h1><p>WordPress en mPDF werken samen.</p>');
+$pdf->WriteHTML('<h1>SimplePDF GitHub test</h1><p>WordPress and mPDF work together.</p>');
 $bytes=$pdf->Output('','S');
 smppb_test(strncmp($bytes,'%PDF-',5)===0 && strlen($bytes)>1000,'Real PDF output');
 file_put_contents(getenv('GITHUB_WORKSPACE').'/test-output.pdf',$bytes);

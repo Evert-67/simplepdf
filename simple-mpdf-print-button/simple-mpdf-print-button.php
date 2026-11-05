@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Simple mPDF Print Button
  * Plugin URI:  https://codepug.nl/
- * Description: Deze plugin toont een knop op je pagina, bericht of andere content, in een lay-out die je zelf hebt ontworpen. De lay-out wordt opgebouwd met standaard HTML en CSS en verwerkt door de <a href='https://mpdf.github.io/' target='-blank'>mPDF Bibliotheek.</a>
+ * Description: Add PDF buttons to posts, pages and other content using your own HTML/CSS templates and the mPDF library.
  * Version: 4.4.0
  * Requires PHP: 8.0
  * Requires at least: 6.3

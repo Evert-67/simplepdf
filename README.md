@@ -1,31 +1,31 @@
 # Simple mPDF Print Button 4.4.0
 
-WordPress-plugin van Evert Beijes / CodePug voor PDF-knoppen en eigen HTML/CSS-templates.
+A WordPress plugin by Evert Beijes / CodePug for PDF buttons and custom HTML/CSS templates. This repository contains the Simple PDF main plugin; extensions such as BGM Bestelformulieren are separate.
 
-Dit is de hoofdplugin **Simple PDF**, zonder BGM Bestelformulieren of andere uitbreidingen.
+## Installation
 
-## Installeren
+Open **Actions → SimplePDF tests**, select a successful run and download the `simple-mpdf-print-button-4.4.0` artifact. Extract the download and upload the contained plugin ZIP through **WordPress → Plugins → Add New → Upload Plugin**. This ZIP includes mPDF and its fonts. GitHub source archives do not contain these dependencies and are not directly installable.
 
-Open **Actions → SimplePDF tests**, kies een geslaagde run en download het artifact `simple-mpdf-print-button-4.4.0`. Pak deze download uit en upload de daarin opgenomen plugin-ZIP via **WordPress → Plugins → Nieuwe plugin → Plugin uploaden**. De ZIP bevat mPDF en de lettertypen. Een GitHub-broncode-ZIP bevat die afhankelijkheden niet en is niet direct installeerbaar.
+The plugin code was imported from the existing 4.4.0 distribution. Composer installs the dependency versions and source references recorded in that distribution. The plugin continues to use `mpdf/autoload.php`.
 
-De eigen plugincode is overgenomen uit de bestaande 4.4.0-distributie. mPDF en afhankelijkheden worden met Composer opgebouwd uit de vastgelegde versies en bronreferenties van die distributie; `mpdf/autoload.php` blijft het gebruikte pad.
+## Features
 
-## Functies
+- Manage, duplicate, import and export templates.
+- Save & Test: save changes and open a PDF preview in a new tab.
+- Default templates per post type and previews with selected content.
+- Button colours, icons, sizes and rounded corners.
+- Open or download PDFs with configurable filenames.
 
-- Templates beheren, dupliceren, importeren en exporteren.
-- Save & Test: eerst opslaan, vervolgens preview in een nieuw tabblad.
-- Standaardtemplate per berichttype en preview met gekozen inhoud.
-- Knopkleuren, pictogrammen, grootte en afronding.
-- Openen/downloaden en instelbare PDF-bestandsnamen.
+See the [user guide](simple-mpdf-print-button/USER-GUIDE-4.4.md).
 
-Zie [de handleiding](simple-mpdf-print-button/LEESMIJ-4.4.md).
+## Automated checks
 
-## GitHub-tests
+GitHub Actions checks PHP and JavaScript syntax, WordPress 6.8.3 activation, colour validation, filenames, safe headers, preview/download selection, and actual mPDF generation with text extraction on PHP 8.0, 8.3 and 8.4. Tests use real WordPress functions. The PDF smoke test exercises mPDF after plugin activation; it does not cover the full HTTP button route or browser interaction.
 
-Op PHP 8.0, 8.3 en 8.4: PHP- en JavaScript-syntax, activering in WordPress 6.8.3, kleurvalidatie, bestandsnamen, veilige headers, preview/download-keuze en echte mPDF-uitvoer met tekstextractie. Het testscript gebruikt echte WordPress-functies. De PDF-test controleert de bibliotheek na pluginactivering; de volledige HTTP-knoproute en het browsergedrag worden hiermee niet getest.
+The [original test report](simple-mpdf-print-button/TEST-REPORT-4.4.md) is historical documentation, not a claim about the current CI run. Current results are available under Actions. Tests send no emails and do not modify a live website. Verify new-tab behaviour and theme styling on your own test site.
 
-Het meegeleverde [eerdere testverslag](simple-mpdf-print-button/TESTVERSLAG-4.4.md) blijft historische documentatie; de actuele GitHub-resultaten staan onder Actions. De tests versturen geen e-mail en veranderen geen live website. Controleer het nieuwe-tabbladgedrag en de themaopmaak ook op je testsite.
+## Development
 
-## Ontwikkelen
+Run `composer install` inside `simple-mpdf-print-button`. Keep customer templates, WordPress configuration, logs and generated documents out of Git. Bundled libraries retain their own licences.
 
-Voer in `simple-mpdf-print-button` `composer install` uit. Bewaar geen echte templates met klantgegevens, WordPress-configuratie, logs of gegenereerde documenten in Git. Meegeleverde bibliotheken behouden hun eigen licenties.
+Repository documentation, pull request descriptions and new commit messages are maintained in English.
