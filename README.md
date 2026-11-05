@@ -1,16 +1,16 @@
-# Simple mPDF Print Button 4.4.0
+# Simple mPDF Print Button 4.4.1
 
-A WordPress plugin by Evert Beijes / CodePug for PDF buttons and custom HTML/CSS templates. This repository contains the Simple PDF main plugin; extensions such as BGM Bestelformulieren are separate.
+A WordPress plugin by Evert Beijes / CodePug for PDF buttons and custom HTML/CSS templates.
 
 ## Installation
 
-**[Download the installable WordPress plugin ZIP](https://github.com/Evert-67/simplepdf/releases/latest/download/simple-mpdf-print-button-4.4.0.zip)**
+**[Download the installable WordPress plugin ZIP](https://github.com/Evert-67/simplepdf/releases/latest/download/simple-mpdf-print-button-4.4.1.zip)**
 
 Upload this ZIP directly through **WordPress → Plugins → Add New → Upload Plugin**. Do not extract it first. If updating, choose to replace the existing plugin.
 
 Use the named plugin ZIP under [Releases](https://github.com/Evert-67/simplepdf/releases/latest). **Code → Download ZIP**, `main.zip`, and the automatic **Source code** downloads are development archives, not WordPress installation packages. The release ZIP includes mPDF and its fonts; the source archive does not.
 
-The plugin code was imported from the existing 4.4.0 distribution. Composer installs the dependency versions and source references recorded in that distribution. The plugin continues to use `mpdf/autoload.php`.
+The plugin code was imported from the existing 4.4.1 distribution. Composer installs the dependency versions and source references recorded in that distribution. The plugin continues to use `mpdf/autoload.php`.
 
 ## Features
 
@@ -33,3 +33,11 @@ The [original test report](simple-mpdf-print-button/TEST-REPORT-4.4.md) is histo
 Run `composer install` inside `simple-mpdf-print-button`. Keep customer templates, WordPress configuration, logs and generated documents out of Git. Bundled libraries retain their own licences.
 
 Repository documentation, pull request descriptions and new commit messages are maintained in English.
+
+## Plugin information page
+
+Create a WordPress page titled **Simple PDF**, add a Shortcode block containing `[simple_pdf_info]`, and set PDF button placement to **None** for that page. The English information page includes features, setup instructions, shortcode examples, a minimal PDF template and frequently asked questions. It never lists or loads your saved templates.
+
+## 4.4.1
+
+Removes site-specific legacy link rewriting and an old example page. Removes the external logo placeholder: `[site_logo]` now returns an empty string when no site logo is configured. Existing database templates and settings remain unchanged. Adds the public `[simple_pdf_info]` information shortcode.

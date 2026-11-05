@@ -26,5 +26,16 @@ $pdf->WriteHTML('<h1>SimplePDF GitHub test</h1><p>WordPress and mPDF work togeth
 $bytes=$pdf->Output('','S');
 smppb_test(strncmp($bytes,'%PDF-',5)===0 && strlen($bytes)>1000,'Real PDF output');
 file_put_contents(getenv('GITHUB_WORKSPACE').'/test-output.pdf',$bytes);
-if ($GLOBALS['smppb_test_count'] !== 13) throw new RuntimeException('Unexpected test count');
+remove_theme_mod('custom_logo');
+smppb_test(do_shortcode('[site_logo]') === '', 'No remote placeholder without a logo');
+$private_id=wp_insert_post(['post_type'=>'pdf_template','post_status'=>'draft','post_title'=>'INTERNAL_TEMPLATE_SENTINEL']);
+$info=do_shortcode('[simple_pdf_info]');
+smppb_test(strpos($info, 'Shortcode examples') !== false, 'Public guide renders');
+smppb_test(strpos($info, 'INTERNAL_TEMPLATE_SENTINEL') === false, 'Guide does not expose saved templates');
+smppb_test(strpos($info, '[print_pdf_button template="123"') !== false && strpos($info, 'smppb-front-button') === false, 'Examples stay literal');
+$GLOBALS['smppb_is_pdf_rendering']=true;
+smppb_test(do_shortcode('[simple_pdf_info]') === '', 'Guide suppressed in PDFs');
+unset($GLOBALS['smppb_is_pdf_rendering']);
+wp_delete_post($private_id, true);
+if ($GLOBALS['smppb_test_count'] !== 18) throw new RuntimeException('Unexpected test count');
 echo $GLOBALS['smppb_test_count']." WordPress/PDF checks passed\n";

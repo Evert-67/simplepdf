@@ -42,10 +42,6 @@ function smppb_generate_pdf() {
         ob_start();
         $html = do_shortcode($code);
         ob_end_clean();
-        // Preserve the existing legacy link behaviour; site owners can disable it using the filter.
-        if (apply_filters('smppb_strip_legacy_links', true)) {
-            $html = preg_replace('#<a\s+[^>]*href="[^"]*beymancloud\.nl[^"]*"[^>]*>(.*?)</a>#is', '$1', $html);
-        }
         $temp = trailingslashit(get_temp_dir()) . 'smppb-' . substr(hash('sha256', ABSPATH . wp_salt()), 0, 20);
         if (!is_dir($temp) && !wp_mkdir_p($temp)) throw new RuntimeException('Unable to create PDF temporary directory.');
         $mpdf = new \Mpdf\Mpdf(['tempDir' => $temp]);

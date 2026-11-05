@@ -6,7 +6,7 @@ if (!defined('ABSPATH') || !current_user_can('manage_options')) return;
 .smppb-manual{max-width:1100px}.smppb-manual h2{margin-top:2em;padding-bottom:.4em;border-bottom:1px solid #c3c4c7}.smppb-manual table{width:100%;border-collapse:collapse;margin:1em 0;background:#fff}.smppb-manual td,.smppb-manual th{border:1px solid #c3c4c7;padding:10px;text-align:left;vertical-align:top}.smppb-manual pre{background:#fff;padding:16px;overflow:auto;border-left:4px solid #2271b1}.smppb-manual ul{list-style:disc;margin-left:24px}.smppb-manual .smppb-toc{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;margin-left:0}.smppb-manual code{overflow-wrap:anywhere}
 </style>
 <h1>Simple mPDF Print Button — Read Me</h1>
-<p><strong>Version 4.4.0 · Evert Beijes / Codepug</strong></p>
+<p><strong>Version 4.4.1 · Evert Beijes / Codepug</strong></p>
 <p>Generate PDFs from WordPress content with your own HTML/CSS templates. Use automatic buttons, shortcodes or the PDF button block. Templates and settings are stored in the WordPress database.</p>
 <ul class="smppb-toc">
 <li><a href="#smppb-start">Quick start</a></li><li><a href="#smppb-placement">Placement</a></li><li><a href="#smppb-appearance">Appearance</a></li><li><a href="#smppb-output">PDF output</a></li><li><a href="#smppb-preview">Save &amp; Test</a></li><li><a href="#smppb-portability">Import/export</a></li><li><a href="#smppb-shortcodes">Shortcodes</a></li><li><a href="#smppb-access">Access</a></li><li><a href="#smppb-troubleshooting">Troubleshooting</a></li><li><a href="#smppb-changes">Changelog</a></li>
@@ -71,7 +71,6 @@ if (!defined('ABSPATH') || !current_user_can('manage_options')) return;
     return $allowed &amp;&amp; my_membership_can_read($user_id, $post-&gt;ID);
 }, 10, 3);</code></pre>
 <p>New links use WordPress admin-post. Old generate-pdf.php bookmarks redirect on a standard WordPress folder structure. Recreate manually stored old links after moving wp-content to a different location.</p>
-<p>The original beymancloud.nl link-removal rule remains for compatibility. Developers can disable it with <code>add_filter('smppb_strip_legacy_links', '__return_false');</code>.</p>
 <h2 id="smppb-troubleshooting">Troubleshooting</h2>
 <table><thead><tr><th>Symptom</th><th>Check</th></tr></thead><tbody>
 <tr><td>No automatic button</td><td>Published template, post-type selection, homepage setting, per-page position, visitor access and main content loop.</td></tr><tr><td>Button appears twice</td><td>Disable automatic placement if a manual shortcode/block is already present.</td></tr><tr><td>Colour changes not visible</td><td>Enable Custom button colours, save settings, clear page caches and check theme CSS overrides.</td></tr><tr><td>PDF opens instead of downloading</td><td>Global output setting, shortcode/block override and browser PDF preferences.</td></tr><tr><td>Preview denied or expired</td><td>Sign in as administrator, reload the template editor and check source access/password.</td></tr><tr><td>PDF generation fails</td><td>mbstring/gd extensions, non-empty template, temporary directory permissions and template HTML. Technical details go to the debug log when WP_DEBUG is enabled.</td></tr><tr><td>Missing PDF images</td><td>Check image URLs and server access to those files, especially after moving templates to another website.</td></tr>
@@ -79,3 +78,5 @@ if (!defined('ABSPATH') || !current_user_can('manage_options')) return;
 <h2 id="smppb-changes">Changelog</h2>
 <ul><li><strong>4.4:</strong> optional button colours, hover/border/radius, size, bundled icons, live colour/contrast preview, inline/download selection, filename patterns, updated Read Me and shortcode examples.</li><li><strong>4.3:</strong> duplication, template JSON import/export, real-content preview, per-post-type template defaults, Save &amp; Test in a new tab.</li><li><strong>4.2:</strong> access checks, repaired template saving, multiple independent controls, per-page placement, floating buttons, Gutenberg block and working template overview.</li></ul>
 </div>
+
+<section><h2>Public information page</h2><p>Add <code>[simple_pdf_info]</code> to a WordPress page to display the English plugin overview, setup guide and examples. Set automatic PDF button placement to None for that page. Saved templates are never listed on the information page.</p></section>

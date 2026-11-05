@@ -169,7 +169,7 @@ add_action('save_post_pdf_template',function($id){
 add_action('admin_enqueue_scripts',function(){
     $screen=get_current_screen();
     if (!$screen || $screen->post_type!=='pdf_template') return;
-    wp_enqueue_script('smppb-manager',SMPPB_URL.'assets/template-manager.js',[], '4.4.0',true);
+    wp_enqueue_script('smppb-manager',SMPPB_URL.'assets/template-manager.js',[], '4.4.1',true);
     wp_localize_script('smppb-manager','smppbManager',['ajaxUrl'=>admin_url('admin-ajax.php'),'nonce'=>wp_create_nonce('smppb_source_search')]);
 });
 add_action('wp_ajax_smppb_source_search',function(){

@@ -52,13 +52,13 @@ jobs:
           grep -q 'SimplePDF GitHub test' test-output.txt
       - name: Build installable ZIP
         if: matrix.php == '8.3'
-        run: zip -qr simple-mpdf-print-button-4.4.0.zip simple-mpdf-print-button -x '*/composer.json' '*/composer.lock'
+        run: zip -qr simple-mpdf-print-button-4.4.1.zip simple-mpdf-print-button -x '*/composer.json' '*/composer.lock'
       - uses: actions/upload-artifact@v4
         if: matrix.php == '8.3'
         with:
-          name: simple-mpdf-print-button-4.4.0
+          name: simple-mpdf-print-button-4.4.1
           path: |
-            simple-mpdf-print-button-4.4.0.zip
+            simple-mpdf-print-button-4.4.1.zip
             test-output.pdf
 
   release:
@@ -68,18 +68,18 @@ jobs:
     permissions:
       contents: write
     concurrency:
-      group: release-4.4.0
+      group: release-4.4.1
       cancel-in-progress: false
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: simple-mpdf-print-button-4.4.0
+          name: simple-mpdf-print-button-4.4.1
           path: dist
       - name: Check plugin archive
         run: |
           python3 - <<'PY'
           import zipfile
-          with zipfile.ZipFile('dist/simple-mpdf-print-button-4.4.0.zip') as archive:
+          with zipfile.ZipFile('dist/simple-mpdf-print-button-4.4.1.zip') as archive:
               files = archive.namelist()
               assert 'simple-mpdf-print-button/simple-mpdf-print-button.php' in files
               assert all(name.startswith('simple-mpdf-print-button/') for name in files)
@@ -92,8 +92,8 @@ jobs:
           GH_REPO: ${{ github.repository }}
           RELEASE_COMMIT: ${{ github.sha }}
         run: |
-          if gh release view v4.4.0 > /dev/null 2>&1; then
-            echo "Release v4.4.0 already exists; preserving published assets."
+          if gh release view v4.4.1 > /dev/null 2>&1; then
+            echo "Release v4.4.1 already exists; preserving published assets."
           else
-            gh release create v4.4.0 "dist/simple-mpdf-print-button-4.4.0.zip" --target "$RELEASE_COMMIT" --title "Simple mPDF Print Button 4.4.0" --notes "Download simple-mpdf-print-button-4.4.0.zip below and upload it directly in WordPress via Plugins > Add New > Upload Plugin. Do not use the automatically generated Source code archives. This plugin ZIP includes mPDF and its fonts. Automated tests include installing and activating the packaged ZIP in WordPress." --latest
+            gh release create v4.4.1 "dist/simple-mpdf-print-button-4.4.1.zip" --target "$RELEASE_COMMIT" --title "Simple mPDF Print Button 4.4.1" --notes "Download simple-mpdf-print-button-4.4.1.zip below and upload it directly in WordPress via Plugins > Add New > Upload Plugin. Do not use the automatically generated Source code archives. This plugin ZIP includes mPDF and its fonts. Automated tests include installing and activating the packaged ZIP in WordPress." --latest
           fi

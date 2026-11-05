@@ -95,8 +95,8 @@ function smppb_presentation_settings_rows() {
 }
 add_action('admin_enqueue_scripts',function($hook){
     if ($hook!=='simple-pdf-print_page_smppb_settings' && (!isset($_GET['page']) || $_GET['page']!=='smppb_settings')) return;
-    wp_enqueue_style('smppb-front',SMPPB_URL.'assets/front.css',[],'4.4.0');
-    wp_enqueue_script('smppb-appearance',SMPPB_URL.'assets/appearance.js',[],'4.4.0',true);
+    wp_enqueue_style('smppb-front',SMPPB_URL.'assets/front.css',[],'4.4.1');
+    wp_enqueue_script('smppb-appearance',SMPPB_URL.'assets/appearance.js',[],'4.4.1',true);
     $icons=[];foreach (['none','document','download','print'] as $icon) $icons[$icon]=smppb_icon_markup($icon);
     wp_localize_script('smppb-appearance','smppbAppearance',['icons'=>$icons]);
 });

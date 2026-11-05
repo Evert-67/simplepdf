@@ -121,7 +121,7 @@ add_shortcode('site_logo', function ($atts) {
     if (has_custom_logo() && $logo_url) {
         return '<img src="' . esc_url($logo_url) . '" alt="' . esc_attr(get_bloginfo('name')) . '"' . $width_attr . $height_attr . '>';
     } else {
-        return '<img src="https://placehold.co/' . esc_attr($atts['width']) . 'x'. esc_attr($atts['height']) .'?text=logo" alt="Test Logo"' . $width_attr . $height_attr . '>';
+        return '';
     }
 });
 

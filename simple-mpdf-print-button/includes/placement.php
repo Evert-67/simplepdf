@@ -132,7 +132,7 @@ add_action('wp_footer', function () {
     echo '<aside aria-label="PDF" class="smppb-floating smppb-' . esc_attr($position) . '">' . smppb_render_control(get_queried_object_id(), $template, '', get_option('smppb_button_custom_class', '')) . '</aside>';
 });
 add_action('wp_enqueue_scripts', function () {
-    if (is_singular()) wp_enqueue_style('smppb-front', SMPPB_URL . 'assets/front.css', [], '4.4.0');
+    if (is_singular()) wp_enqueue_style('smppb-front', SMPPB_URL . 'assets/front.css', [], '4.4.1');
 });
 add_action('add_meta_boxes', function () {
     foreach (smppb_post_types() as $type) add_meta_box('smppb-placement', 'PDF button placement', 'smppb_placement_metabox', $type->name, 'side');
@@ -155,7 +155,7 @@ add_action('save_post', function ($post_id) {
     update_post_meta($post_id, '_smppb_template', max(-1, (int)($_POST['smppb_page_template'] ?? -1)));
 });
 add_action('init', function () {
-    wp_register_script('smppb-block', SMPPB_URL . 'assets/block.js', ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components'], '4.4.0', true);
+    wp_register_script('smppb-block', SMPPB_URL . 'assets/block.js', ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components'], '4.4.1', true);
     register_block_type('smppb/pdf-button', [
         'api_version' => 3, 'editor_script' => 'smppb-block', 'uses_context' => ['postId'],
         'attributes' => ['template' => ['type' => 'number', 'default' => 0], 'label' => ['type' => 'string', 'default' => 'Create PDF'], 'alignment' => ['type' => 'string', 'default' => 'left'], 'width' => ['type' => 'string', 'default' => ''], 'className' => ['type' => 'string', 'default' => ''], 'icon' => ['type' => 'string', 'default' => 'inherit'], 'output' => ['type' => 'string', 'default' => 'inherit'], 'size' => ['type' => 'string', 'default' => 'inherit']],
@@ -177,5 +177,5 @@ function smppb_templates_page() {
     smppb_manager_actions();
     echo '<table class="widefat striped"><thead><tr><th>Template</th><th>Shortcode</th></tr></thead><tbody>';
     foreach (smppb_templates() as $template) echo '<tr><td><a href="' . esc_url(get_edit_post_link($template->ID)) . '">' . esc_html($template->post_title) . '</a> · <a href="' . esc_url(wp_nonce_url(add_query_arg(['action'=>'smppb_duplicate_template','template_id'=>$template->ID],admin_url('admin-post.php')),'smppb_duplicate_'.$template->ID)) . '">Duplicate</a></td><td><code>[print_pdf_button template="' . esc_attr($template->ID) . '"]</code></td></tr>';
-    echo '</tbody></table><p>Version 4.4.0: button appearance, icons, PDF download options and file naming. See Read Me for the complete guide.</p></div>';
+    echo '</tbody></table><p>Version 4.4.1: button appearance, icons, PDF download options and file naming. See Read Me for the complete guide.</p></div>';
 }
