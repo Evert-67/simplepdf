@@ -325,7 +325,7 @@ if ( $grouped ) {
  */
 function smppb_enqueue_scripts() {
     if ( is_singular() ) {
-        wp_enqueue_script( 'smppb-js', SMPPB_URL . 'assets/print-button.js', [], '4.4.1', true );
+        wp_enqueue_script( 'smppb-js', SMPPB_URL . 'assets/print-button.js', [], '4.4.2', true );
         wp_localize_script( 'smppb-js', 'smppbAjax', [
             'ajax_url' => admin_url( 'admin-ajax.php' ),
             'post_id'   => get_the_ID(),

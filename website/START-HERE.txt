@@ -1,0 +1,23 @@
+SIMPLE PDF — STANDALONE WORDPRESS PAGE
+
+This is page content, not a plugin. Do not upload this ZIP through Plugins.
+
+Option A: Import as an editable draft
+1. Extract this ZIP on your computer.
+2. In WordPress, open Tools > Import > WordPress.
+3. Install the WordPress importer if prompted.
+4. Import simple-pdf-wordpress-import.xml and assign it to your own user.
+5. Open Pages > Simple PDF (Draft), review the page and publish when ready.
+
+Option B: Paste into a new page
+1. Open simple-pdf-wordpress-page.html in a plain-text editor.
+2. Copy its entire contents.
+3. Create a WordPress page titled Simple PDF.
+4. In the editor's three-dot menu choose Code editor, paste, then return to Visual editor.
+5. Review and publish when ready.
+
+The page uses native Gutenberg paragraphs, headings and a download button. Code examples use Custom HTML blocks so the displayed shortcodes are not executed. Edit those blocks in HTML view and preserve the &#91; and &#93; entities around examples.
+
+The page inherits your theme. It does not need an information shortcode and remains readable without Simple PDF. If Simple PDF is active, set PDF button placement > None on this information page.
+
+The download button points to Simple PDF 4.4.2. Update that link when publishing a later release. Import once; repeated imports can create duplicate pages. Nothing is published automatically and no live website has been modified.

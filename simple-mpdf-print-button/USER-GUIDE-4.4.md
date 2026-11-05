@@ -116,7 +116,3 @@ Automatic buttons resolve templates in this order: explicit page setting → pos
 ## Test on your site
 
 After updating, check before/after/both placement, floating positions on mobile, your CSS framework, and a PDF containing a logo, tables and multiple pages. Check logged-out visitors and membership rules. Theme-specific presentation and existing custom templates require verification on your own site.
-
-## Public information page (4.4.1)
-
-Add `[simple_pdf_info]` in a Shortcode block on a page titled Simple PDF. Set automatic PDF button placement to None on that page. The static English guide contains copyable code examples and does not read saved templates. It is suppressed during PDF rendering. Its only promotional website link is CodePug. Set a theme logo before using `[site_logo]`; no external placeholder is fetched when a logo is absent.

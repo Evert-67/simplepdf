@@ -1,0 +1,167 @@
+<!-- wp:paragraph -->
+<p><strong>CODEPUG · WORDPRESS TOOLS</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Turn your WordPress content into a PDF with a layout you control. Simple PDF adds a button to your pages and posts, so visitors can open or download a document using your own HTML/CSS template.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/Evert-67/simplepdf/releases/download/v4.4.2/simple-mpdf-print-button-4.4.2.zip">Download Simple PDF 4.4.2</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:paragraph -->
+<p>Free to download · WordPress 6.3+ · PHP 8.0+ · Requires mbstring and gd</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">A PDF that fits your content</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Reusable layouts.</strong> Build templates with HTML, mPDF-compatible CSS and content shortcodes. Duplicate a design or transfer templates between sites with JSON import and export.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Flexible buttons.</strong> Choose automatic placement, a Gutenberg block or a shortcode. Use a fixed template or offer visitors a template selector.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Your preferred output.</strong> Open PDFs in a new tab or download them. Adjust the button colours, icon and size, and choose a filename pattern.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Get started</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>1. Install the plugin.</strong> Download the installation ZIP above. Upload it through Plugins → Add New → Upload Plugin, then activate it. Upload the ZIP without extracting it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>2. Create your first template.</strong> Open Simple PDF Print and add a template. Use the minimal template below as a starting point.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>3. Save and preview.</strong> Select preview content and click Save &amp; Test PDF. The preview opens in a new tab while the editor remains open.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>4. Add a button.</strong> Publish your template, then add a PDF button block or one of the shortcodes below to a page.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Choose the installation ZIP.</strong> GitHub’s Code → Download ZIP and Source code archives are development files. The installation ZIP includes mPDF and its fonts.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Button examples</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Replace <code>123</code> with the ID of your published template. The examples below are displayed as text; they are not live PDF buttons.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>A simple button</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre style="padding:20px;border-radius:8px;background:#17383f;color:#f0f7f7;white-space:pre-wrap;overflow-wrap:anywhere"><code>&#91;print_pdf_button template=&quot;123&quot; label=&quot;Create PDF&quot;&#93;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p><strong>Download a PDF with an icon</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre style="padding:20px;border-radius:8px;background:#17383f;color:#f0f7f7;white-space:pre-wrap;overflow-wrap:anywhere"><code>&#91;print_pdf_button template=&quot;123&quot; label=&quot;Download PDF&quot; icon=&quot;download&quot; output=&quot;download&quot; size=&quot;large&quot;&#93;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p><strong>Let visitors choose a template</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre style="padding:20px;border-radius:8px;background:#17383f;color:#f0f7f7;white-space:pre-wrap;overflow-wrap:anywhere"><code>&#91;print_pdf_button template=&quot;0&quot; label=&quot;Create PDF&quot; align=&quot;center&quot;&#93;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p><strong>Control width and alignment</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre style="padding:20px;border-radius:8px;background:#17383f;color:#f0f7f7;white-space:pre-wrap;overflow-wrap:anywhere"><code>&#91;print_pdf_button template=&quot;123&quot; label=&quot;Open PDF&quot; output=&quot;inline&quot; align=&quot;right&quot; width=&quot;250px&quot; class=&quot;my-pdf-button&quot;&#93;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Prefer the block editor? Add the <strong>PDF button</strong> block and choose the options in its settings. Set the page’s <strong>PDF button placement</strong> to <strong>None</strong> when adding a manual button to avoid duplicates.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Your first PDF template</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Paste this into the plugin’s template editor. The content shortcodes insert the selected page’s title, site name, date and content.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre style="padding:20px;border-radius:8px;background:#17383f;color:#f0f7f7;white-space:pre-wrap;overflow-wrap:anywhere"><code>&lt;style&gt;
+body { font-family: sans-serif; color: #243b40; }
+h1 { color: #225f6a; }
+&lt;/style&gt;
+&lt;h1&gt;&#91;post_title&#93;&lt;/h1&gt;
+&lt;p&gt;&#91;site_name&#93; · &#91;post_date&#93;&lt;/p&gt;
+&#91;post_content&#93;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Other useful template shortcodes include <code>&#91;site_logo width="100"&#93;</code>, <code>&#91;post_author&#93;</code>, <code>&#91;post_excerpt&#93;</code> and <code>&#91;pagebreak&#93;</code>. Set a logo in your theme before using the logo shortcode.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>PDF layout uses mPDF-compatible HTML and CSS. A website framework can style the button, but not every modern browser CSS feature is supported inside a PDF.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Useful settings</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Filename patterns:</strong> use <code>{site}-{title}-{date}</code>. Available tokens are <code>{title}</code>, <code>{id}</code>, <code>{date}</code>, <code>{site}</code> and <code>{template}</code>. The .pdf extension is added automatically.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Default templates:</strong> automatic buttons use an explicit page setting first, then the post-type default, then the global default. Manual buttons retain their own template selection.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Save &amp; Test:</strong> always requests an inline preview in a new tab, even when visitor buttons are configured to download. Browser preferences can affect how the PDF opens.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Frequently asked questions</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Where are my templates stored?</strong><br>In your own WordPress database. Installing an update preserves them. Your templates are not included when someone else downloads the plugin.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Which templates can visitors use?</strong><br>Published templates can appear in the selector. Keep unfinished or internal-only designs as drafts. PDF generation also checks access to the source content. Membership plugins may need an additional integration.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Does template export include images?</strong><br>No. JSON contains the template code, descriptions and categories. Images and fonts remain linked; transfer those files separately when moving a site.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Where is the full manual?</strong><br>Open Simple PDF Print → Read Me and Shortcode Reference in WordPress for detailed instructions and troubleshooting.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Simple PDF by <a href="https://codepug.nl/">CodePug</a> · Practical WordPress tools by Evert Beijes.</p>
+<!-- /wp:paragraph -->

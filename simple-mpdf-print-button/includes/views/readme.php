@@ -78,5 +78,3 @@ if (!defined('ABSPATH') || !current_user_can('manage_options')) return;
 <h2 id="smppb-changes">Changelog</h2>
 <ul><li><strong>4.4:</strong> optional button colours, hover/border/radius, size, bundled icons, live colour/contrast preview, inline/download selection, filename patterns, updated Read Me and shortcode examples.</li><li><strong>4.3:</strong> duplication, template JSON import/export, real-content preview, per-post-type template defaults, Save &amp; Test in a new tab.</li><li><strong>4.2:</strong> access checks, repaired template saving, multiple independent controls, per-page placement, floating buttons, Gutenberg block and working template overview.</li></ul>
 </div>
-
-<section><h2>Public information page</h2><p>Add <code>[simple_pdf_info]</code> to a WordPress page to display the English plugin overview, setup guide and examples. Set automatic PDF button placement to None for that page. Saved templates are never listed on the information page.</p></section>

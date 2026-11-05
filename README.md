@@ -1,16 +1,16 @@
-# Simple mPDF Print Button 4.4.1
+# Simple mPDF Print Button 4.4.2
 
 A WordPress plugin by Evert Beijes / CodePug for PDF buttons and custom HTML/CSS templates.
 
 ## Installation
 
-**[Download the installable WordPress plugin ZIP](https://github.com/Evert-67/simplepdf/releases/latest/download/simple-mpdf-print-button-4.4.1.zip)**
+**[Download the installable WordPress plugin ZIP](https://github.com/Evert-67/simplepdf/releases/latest/download/simple-mpdf-print-button-4.4.2.zip)**
 
 Upload this ZIP directly through **WordPress → Plugins → Add New → Upload Plugin**. Do not extract it first. If updating, choose to replace the existing plugin.
 
 Use the named plugin ZIP under [Releases](https://github.com/Evert-67/simplepdf/releases/latest). **Code → Download ZIP**, `main.zip`, and the automatic **Source code** downloads are development archives, not WordPress installation packages. The release ZIP includes mPDF and its fonts; the source archive does not.
 
-The plugin code was imported from the existing 4.4.1 distribution. Composer installs the dependency versions and source references recorded in that distribution. The plugin continues to use `mpdf/autoload.php`.
+The plugin code was imported from the original 4.4.0 distribution. Composer installs the dependency versions and source references recorded in that distribution. The plugin continues to use `mpdf/autoload.php`.
 
 ## Features
 
@@ -34,10 +34,10 @@ Run `composer install` inside `simple-mpdf-print-button`. Keep customer template
 
 Repository documentation, pull request descriptions and new commit messages are maintained in English.
 
-## Plugin information page
+## Website content
 
-Create a WordPress page titled **Simple PDF**, add a Shortcode block containing `[simple_pdf_info]`, and set PDF button placement to **None** for that page. The English information page includes features, setup instructions, shortcode examples, a minimal PDF template and frequently asked questions. It never lists or loads your saved templates.
+The product information page is separate WordPress page content in `website/`. Import its XML as a draft through Tools → Import → WordPress, or paste the HTML into a page's code editor. It uses editable Gutenberg blocks and does not depend on a plugin information shortcode. This content is not included in the plugin installation ZIP.
 
-## 4.4.1
+## 4.4.2
 
-Removes site-specific legacy link rewriting and an old example page. Removes the external logo placeholder: `[site_logo]` now returns an empty string when no site logo is configured. Existing database templates and settings remain unchanged. Adds the public `[simple_pdf_info]` information shortcode.
+Removes the information-page shortcode and its bundled page. The plugin only provides PDF functionality. Existing templates and settings are preserved. The neutral branding and removal of external logo placeholders from 4.4.1 are retained.
